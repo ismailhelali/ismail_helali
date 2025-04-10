@@ -47,58 +47,52 @@
     <h1>Loading documents...</h1>
   </div>
 
-  <script>
-    const token = "my_secure_token"; // Your secret token
-    const apiURL = "https://script.google.com/macros/s/AKfycbzqoxRcUOKVclXJBnrvRCmZHLl-6BNZkfM4wW00YZIF2uVEvXKBpMvmywCBULx_QjY11g/exec";
+<script>
+  const apiURL = "https://script.google.com/macros/s/AKfycbz1NG88yTWkklqkav0cYQy71ptEhiflz0_1P4JqdUcMZ5N2V3WyW0_5J0LD3uSM59GAtg/exec";
 
-    document.getElementById("filterForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const formData = new FormData(e.target);
-      const params = new URLSearchParams({
-        token,
-        keyword: formData.get("keyword") || "",
-        after: formData.get("after") || ""
-      });
-
-      fetchAndDisplayDocs(`${apiURL}?${params.toString()}`);
+  document.getElementById("filterForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const params = new URLSearchParams({
+      keyword: formData.get("keyword") || "",
+      after: formData.get("after") || ""
     });
 
-    function fetchAndDisplayDocs(url) {
-      fetch(url)
-        .then(res => res.json())
-        .then(data => {
-          const container = document.getElementById("docs");
-          container.innerHTML = "";
+    fetchAndDisplayDocs(`${apiURL}?${params.toString()}`);
+  });
 
-          if (data.error) {
-            container.innerHTML = `<p style="color:red;">${data.error}</p>`;
-            return;
-          }
+  function fetchAndDisplayDocs(url) {
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById("docs");
+        container.innerHTML = "";
 
-          if (data.length === 0) {
-            container.innerHTML = `<p>No documents found.</p>`;
-            return;
-          }
+        if (data.length === 0) {
+          container.innerHTML = `<p>No documents found.</p>`;
+          return;
+        }
 
-          data.forEach(doc => {
-            const h1 = document.createElement("h1");
-            h1.textContent = doc.title;
+        data.forEach(doc => {
+          const h1 = document.createElement("h1");
+          h1.textContent = doc.title;
 
-            const p = document.createElement("p");
-            p.textContent = doc.content;
+          const p = document.createElement("p");
+          p.textContent = doc.content;
 
-            container.appendChild(h1);
-            container.appendChild(p);
-          });
-        })
-        .catch(err => {
-          console.error(err);
-          document.getElementById("docs").textContent = "Failed to load documents.";
+          container.appendChild(h1);
+          container.appendChild(p);
         });
-    }
+      })
+      .catch(err => {
+        console.error(err);
+        document.getElementById("docs").textContent = "Failed to load documents.";
+      });
+  }
 
-    // Load all docs by default
-    fetchAndDisplayDocs(`${apiURL}?token=${token}`);
-  </script>
+  // Load all docs by default
+  fetchAndDisplayDocs(apiURL);
+</script>
+
 </body>
 </html>
