@@ -27,9 +27,11 @@
     nav a:hover {
       text-decoration: underline;
     }
-    h1, h2, h3 {
+    h1 {
       margin-top: 1.5rem;
       margin-bottom: 1rem;
+      font-size: 2rem; /* Larger size for titles */
+      font-weight: bold;
     }
     p {
       margin-bottom: 1rem;
@@ -53,39 +55,50 @@
     <!-- Google Doc content will be inserted here -->
   </div>
 
-  <script src="https://apis.google.com/js/api.js"></script>
-<script>
-  // Replace with your deployed Google Apps Script Web App URL
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwgJyxesLff9-9-mmFsBZx-zgW4-pBDl0vzfDGH3dMlPRZUQNSbxkUwQPvfXcfG203cSg/exec';
+  <script>
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbydLWnvWcemi1hnhkbypXTK5K7nXk5oMD5SwEZziyBRCydFh3JqaeEvgmaQGyZ2qhEz1A/exec';
 
-  function loadContent() {
-    fetch(SCRIPT_URL, {
-      method: 'GET',
-      mode: 'cors', // Use CORS mode
-      redirect: 'follow' // Handle redirects automatically
-    })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok: ' + response.statusText);
-        }
-        return response.json();
+    function loadContent() {
+      fetch(SCRIPT_URL, {
+        method: 'GET',
+        mode: 'cors',
+        redirect: 'follow'
       })
-      .then(data => {
-        if (data.content) {
-          document.getElementById('content').innerHTML = data.content;
-        } else if (data.error) {
-          document.getElementById('content').innerHTML = `<p>Error: ${data.error}</p>`;
-        }
-      })
-      .catch(error => {
-        console.error('Error loading content:', error);
-        document.getElementById('content').innerHTML = 
-          '<p>Error loading content from Google Docs. Check console for details.</p>';
-      });
-  }
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (data.content) {
+            // Split content by newlines
+            const lines = data.content.split('\n').filter(line => line.trim() !== '');
+            let htmlContent = '';
 
-  // Load content when page loads
-  window.onload = loadContent;
-</script>
+            lines.forEach(line => {
+              // Simple rule: Treat shorter lines (e.g., < 50 chars) as titles
+              // You can adjust this logic based on your Doc's structure
+              if (line.length < 50 && line.trim().length > 0) {
+                htmlContent += `<h1>${line.trim()}</h1>`;
+              } else {
+                htmlContent += `<p>${line.trim()}</p>`;
+              }
+            });
+
+            document.getElementById('content').innerHTML = htmlContent;
+          } else if (data.error) {
+            document.getElementById('content').innerHTML = `<p>Error: ${data.error}</p>`;
+          }
+        })
+        .catch(error => {
+          console.error('Error loading content:', error);
+          document.getElementById('content').innerHTML = 
+            '<p>Failed to load content from Google Docs. Check console for details.</p>';
+        });
+    }
+
+    window.onload = loadContent;
+  </script>
 </body>
 </html>
