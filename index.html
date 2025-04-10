@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ismail Helali</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: white;
+      color: black;
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem;
+    }
+    h1 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+    }
+    p {
+      white-space: pre-wrap;
+      margin-bottom: 2rem;
+    }
+    form {
+      margin-bottom: 2rem;
+    }
+    label, input {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <form id="filterForm">
+    <label>
+      Keyword in title:
+      <input type="text" name="keyword" />
+    </label>
+    <label>
+      Updated after (YYYY-MM-DD):
+      <input type="date" name="after" />
+    </label>
+    <button type="submit">Search</button>
+  </form>
+
+  <div id="docs">
+    <h1>Loading documents...</h1>
+  </div>
+
+  <script>
+    const token = "my_secure_token"; // Your secret token
+    const apiURL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+
+    document.getElementById("filterForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const params = new URLSearchParams({
+        token,
+        keyword: formData.get("keyword") || "",
+        after: formData.get("after") || ""
+      });
+
+      fetchAndDisplayDocs(`${apiURL}?${params.toString()}`);
+    });
+
+    function fetchAndDisplayDocs(url) {
+      fetch(url)
+        .then(res => res.json())
+        .then(data => {
+          const container = document.getElementById("docs");
+          container.innerHTML = "";
+
+          if (data.error) {
+            container.innerHTML = `<p style="color:red;">${data.error}</p>`;
+            return;
+          }
+
+          if (data.length === 0) {
+            container.innerHTML = `<p>No documents found.</p>`;
+            return;
+          }
+
+          data.forEach(doc => {
+            const h1 = document.createElement("h1");
+            h1.textContent = doc.title;
+
+            const p = document.createElement("p");
+            p.textContent = doc.content;
+
+            container.appendChild(h1);
+            container.appendChild(p);
+          });
+        })
+        .catch(err => {
+          console.error(err);
+          document.getElementById("docs").textContent = "Failed to load documents.";
+        });
+    }
+
+    // Load all docs by default
+    fetchAndDisplayDocs(`${apiURL}?token=${token}`);
+  </script>
+</body>
+</html>
