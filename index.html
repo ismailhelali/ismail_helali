@@ -54,25 +54,40 @@
   </div>
 
   <script src="https://apis.google.com/js/api.js"></script>
-  <script>
-    // Replace with your deployed Google Apps Script web app URL
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby8Lr-ir1FWjTZdB7K0FqutpWomn1Vql9K3gRluW39GFzJhk2PLIrkiP2vLVRXvgixXcw/exec';
+ <script>
+  // Replace with your deployed Google Apps Script Web App URL
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxBtReEwrFmhWaHqARloEKNTe1Nnp9CgWUInMVBelq1y5VqIctZAzbOFrlh4ok_q7uC4g/exec';
 
-    function loadContent() {
-      fetch(SCRIPT_URL)
-        .then(response => response.json())
-        .then(data => {
+  function loadContent() {
+    fetch(SCRIPT_URL, {
+      method: 'GET',
+      mode: 'cors', // Try with CORS first
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (data.content) {
           document.getElementById('content').innerHTML = data.content;
-        })
-        .catch(error => {
-          console.error('Error loading content:', error);
-          document.getElementById('content').innerHTML = 
-            '<p>Error loading content from Google Docs</p>';
-        });
-    }
+        } else if (data.error) {
+          document.getElementById('content').innerHTML = `<p>Error: ${data.error}</p>`;
+        }
+      })
+      .catch(error => {
+        console.error('Error loading content:', error);
+        document.getElementById('content').innerHTML = 
+          '<p>Error loading content from Google Docs</p>';
+      });
+  }
 
-    // Load content when page loads
-    window.onload = loadContent;
-  </script>
+  // Load content when page loads
+  window.onload = loadContent;
+</script>
 </body>
 </html>
