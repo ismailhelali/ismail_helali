@@ -2,97 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Ismail Helali</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simplicity</title>
   <style>
     body {
+      margin: 0;
+      padding: 1rem;
       font-family: sans-serif;
-      background: white;
-      color: black;
-      max-width: 800px;
+      font-size: 16px;
+      line-height: 1.5;
+      background: #fff;
+      color: #000;
+      max-width: 600px;
       margin: auto;
-      padding: 2rem;
     }
-    h1 {
-      font-size: 1.5rem;
-      margin-top: 2rem;
+    nav {
+      margin-bottom: 2rem;
+    }
+    nav a {
+      margin-right: 1rem;
+      text-decoration: none;
+      color: inherit;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    h1, h2, h3 {
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
     }
     p {
-      white-space: pre-wrap;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
     }
-    form {
-      margin-bottom: 2rem;
-    }
-    label, input {
-      display: block;
-      margin-bottom: 0.5rem;
+    #content {
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Contact</a>
+  </nav>
 
-  <form id="filterForm">
-    <label>
-      Keyword in title:
-      <input type="text" name="keyword" />
-    </label>
-    <label>
-      Updated after (YYYY-MM-DD):
-      <input type="date" name="after" />
-    </label>
-    <button type="submit">Search</button>
-  </form>
-
-  <div id="docs">
-    <h1>Loading documents...</h1>
+  <h1>Simplicity is the Ultimate Sophistication</h1>
+  <p>This page is designed with only the essentials—clean type, responsive layout, and no distractions.</p>
+  
+  <div id="content">
+    <!-- Google Doc content will be inserted here -->
   </div>
 
-<script>
-  const apiURL = "https://script.google.com/macros/s/AKfycbz1NG88yTWkklqkav0cYQy71ptEhiflz0_1P4JqdUcMZ5N2V3WyW0_5J0LD3uSM59GAtg/exec";
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script>
+    // Replace with your deployed Google Apps Script web app URL
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby8Lr-ir1FWjTZdB7K0FqutpWomn1Vql9K3gRluW39GFzJhk2PLIrkiP2vLVRXvgixXcw/exec';
 
-  document.getElementById("filterForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const params = new URLSearchParams({
-      keyword: formData.get("keyword") || "",
-      after: formData.get("after") || ""
-    });
-
-    fetchAndDisplayDocs(`${apiURL}?${params.toString()}`);
-  });
-
-  function fetchAndDisplayDocs(url) {
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        const container = document.getElementById("docs");
-        container.innerHTML = "";
-
-        if (data.length === 0) {
-          container.innerHTML = `<p>No documents found.</p>`;
-          return;
-        }
-
-        data.forEach(doc => {
-          const h1 = document.createElement("h1");
-          h1.textContent = doc.title;
-
-          const p = document.createElement("p");
-          p.textContent = doc.content;
-
-          container.appendChild(h1);
-          container.appendChild(p);
+    function loadContent() {
+      fetch(SCRIPT_URL)
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('content').innerHTML = data.content;
+        })
+        .catch(error => {
+          console.error('Error loading content:', error);
+          document.getElementById('content').innerHTML = 
+            '<p>Error loading content from Google Docs</p>';
         });
-      })
-      .catch(err => {
-        console.error(err);
-        document.getElementById("docs").textContent = "Failed to load documents.";
-      });
-  }
+    }
 
-  // Load all docs by default
-  fetchAndDisplayDocs(apiURL);
-</script>
-
+    // Load content when page loads
+    window.onload = loadContent;
+  </script>
 </body>
 </html>
