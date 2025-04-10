@@ -54,21 +54,19 @@
   </div>
 
   <script src="https://apis.google.com/js/api.js"></script>
- <script>
+<script>
   // Replace with your deployed Google Apps Script Web App URL
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxBtReEwrFmhWaHqARloEKNTe1Nnp9CgWUInMVBelq1y5VqIctZAzbOFrlh4ok_q7uC4g/exec';
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxRyz7tv93tA6YF-QGuKaKEH6i4W-3y2iuR5NplnH_vixRzyYguO3k_iV243UhzJ1DnHQ/exec';
 
   function loadContent() {
     fetch(SCRIPT_URL, {
       method: 'GET',
-      mode: 'cors', // Try with CORS first
-      headers: {
-        'Content-Type': 'application/json'
-      }
+      mode: 'cors', // Use CORS mode
+      redirect: 'follow' // Handle redirects automatically
     })
       .then(response => {
         if (!response.ok) {
-          throw new Error('Network response was not ok ' + response.statusText);
+          throw new Error('Network response was not ok: ' + response.statusText);
         }
         return response.json();
       })
@@ -82,7 +80,7 @@
       .catch(error => {
         console.error('Error loading content:', error);
         document.getElementById('content').innerHTML = 
-          '<p>Error loading content from Google Docs</p>';
+          '<p>Error loading content from Google Docs. Check console for details.</p>';
       });
   }
 
