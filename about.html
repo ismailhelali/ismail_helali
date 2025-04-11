@@ -101,8 +101,8 @@
 </head>
 <body>
   <nav>
-    <a href="#" aria-label="الصفحة الرئيسية">الرئيسية</a>
-    <a href="#" aria-label="حول الشاعر">حول الشاعر</a>
+    <a href="/" aria-label="الصفحة الرئيسية">الرئيسية</a>
+    <a href="/about" aria-label="حول الشاعر">حول الشاعر</a>
     <a href="#" aria-label="اتصل بنا">اتصال</a>
   </nav>
 
@@ -133,54 +133,5 @@
     </div>
   </div>
 
-  <div id="content" aria-live="polite">
-    <!-- Google Doc content will be inserted here -->
-  </div>
-
-  <script>
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwBqMXOly5RfFqTsFgslSq2RnTbhRuSo5IXewUYC6Nhdj2mNo_h7f6OPfRGozDu7F6jNw/exec';
-
-    function loadContent() {
-      const contentDiv = document.getElementById('content');
-      
-      fetch(SCRIPT_URL, {
-        method: 'GET',
-        mode: 'cors',
-        redirect: 'follow'
-      })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then(data => {
-          if (data.content && Array.isArray(data.content)) {
-            let htmlContent = '';
-            data.content.forEach(item => {
-              if (item.isTitle) {
-                htmlContent += `<h2>${item.text}</h2>`;
-              } else {
-                htmlContent += `<p class="poem">${item.text}</p>`;
-              }
-            });
-            contentDiv.innerHTML = htmlContent;
-          } else if (data.error) {
-            contentDiv.classList.add('error');
-            contentDiv.innerHTML = `<p>${data.error}</p>`;
-          } else {
-            contentDiv.classList.add('error');
-            contentDiv.innerHTML = '<p>لا توجد قصائد متاحة حاليًا.</p>';
-          }
-        })
-        .catch(error => {
-          console.error('Error loading content:', error);
-          contentDiv.classList.add('error');
-          contentDiv.innerHTML = '<p>فشل تحميل القصائد. يرجى المحاولة لاحقًا.</p>';
-        });
-    }
-
-    window.onload = loadContent;
-  </script>
-</body>
+  </body>
 </html>
