@@ -12,9 +12,8 @@ body {
     font-size: 1.2rem; /* Comfortable size for poetry */
     line-height: 1.8; /* Spacious for readability */
     direction: rtl; /* Right-to-left for Arabic */
-    text-align: right; /* Align text to the right */
+    text-align: centre; /* Align text to the centre */
     color: #333; /* Soft dark color for contrast */
-    background-color: #f8f1e9; /* Warm, off-white background for a poetic feel */
 }
 
 /* Styling for poem titles */
@@ -98,7 +97,7 @@ h1, h2 {
               if (item.isTitle) {
                 htmlContent += `<h1>${item.text}</h1>`;
               } else {
-                htmlContent += `<p>${item.text}</p>`;
+                htmlContent += `<p class="poem">${item.text}</p>`;
               }
             });
             document.getElementById('content').innerHTML = htmlContent;
