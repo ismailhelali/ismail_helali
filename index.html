@@ -4,197 +4,173 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Noto+Kufi+Arabic&family=Scheherazade+New&display=swap" rel="stylesheet">
-  <title>قصائد</title>
+  <title>قصائد – إسماعيل الهلالي</title>
   <style>
-    /* General Arabic text styling */
     body {
-      font-family: 'Amiri', 'Noto Kufi Arabic', 'Scheherazade+New', sans-serif;
-      font-size: 1.2rem; /* Comfortable size for poetry */
-      line-height: 1.8; /* Spacious for readability */
-      direction: rtl; /* Right-to-left for Arabic */
-      text-align: center; /* Fixed typo */
-      color: #333; /* Soft dark color for contrast */
-      /* Warm, poetic background */
-      margin: 0; /* Remove default margin */
-      padding: 2rem; /* Add padding for breathing room */
+      font-family: 'Amiri', 'Noto Kufi Arabic', 'Scheherazade New', sans-serif;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      direction: rtl;
+      text-align: center;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      background-color: #fefaf5;
     }
 
-    /* Navigation styling */
     nav {
-      margin-bottom: 2rem;
+      background-color: #faf2e8;
+      padding: 1rem;
       display: flex;
-      justify-content: center; /* Center navigation links */
-      gap: 1.5rem; /* Space between links */
+      justify-content: center;
+      gap: 2rem;
+      border-bottom: 1px solid #ddd;
     }
+
     nav a {
       text-decoration: none;
-      color: #2c3e50; /* Match header color for cohesion */
+      color: #2c3e50;
       font-family: 'Noto Kufi Arabic', sans-serif;
       font-size: 1.1rem;
     }
+
     nav a:hover {
-      text-decoration: underline;
-      color: #1a252f; /* Slightly darker on hover */
+      color: #8e44ad;
     }
 
-    /* Styling for poem titles */
-    h1, h2 {
+    header {
+      padding: 4rem 2rem 2rem;
+      background: linear-gradient(to bottom, #fffdf9, #f9f4ed);
+    }
+
+    header h1 {
       font-family: 'Noto Kufi Arabic', sans-serif;
-      font-weight: 700; /* Bold for emphasis */
-      font-size: 1.8rem;
-      color: #2c3e50; /* Deep blue-gray for elegance */
+      font-size: 2.2rem;
+      color: #2c3e50;
       margin-bottom: 1rem;
     }
 
-    /* Styling for poem text */
-    .poem {
+    header p {
       font-family: 'Amiri', serif;
       font-size: 1.3rem;
-      font-weight: 400; /* Regular weight for flow */
-      color: #1a252f; /* Darker shade for clarity */
-      padding: 1.5rem;
-      max-width: 600px; /* Narrow width for poetic lines */
-      margin: 0 auto 1.5rem auto; /* Center with bottom margin */
-      border-radius: 8px; /* Soft corners */
+      color: #555;
+      margin-bottom: 2rem;
     }
 
-    /* Hover effect for interactive feel */
-    .poem:hover {
-      background-color: #f4ece1; /* Subtle highlight on hover */
+    .cta-button {
+      background-color: #8e44ad;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 25px;
+      cursor: pointer;
       transition: background-color 0.3s ease;
     }
 
-    /* Loading and error states */
-    #content:empty::before {
-      content: 'جاري تحميل القصائد...';
+    .cta-button:hover {
+      background-color: #732d91;
+    }
+
+    .section {
+      padding: 3rem 1.5rem;
+    }
+
+    .poem {
       font-family: 'Amiri', serif;
-      color: #666;
-      font-size: 1.1rem;
+      background-color: #fff;
+      max-width: 600px;
+      margin: 1.5rem auto;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #eee;
     }
 
-    #content.error::before {
-      content: 'عذرًا، حدث خطأ أثناء تحميل القصائد.';
-      color: #a94442;
+    .subscribe {
+      background-color: #f5efe6;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: 0 auto;
     }
 
-    /* Main content container */
-    #content {
-      margin-top: 2rem;
-      min-height: 200px; /* Prevent layout jump */
+    .subscribe input {
+      padding: 0.6rem;
+      width: 80%;
+      border: 1px solid #ccc;
+      border-radius: 20px;
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    footer {
+      background-color: #faf2e8;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #777;
     }
   </style>
 </head>
 <body>
+
   <nav>
-    <a href="/ismail_helali" aria-label="الصفحة الرئيسية">الرئيسية</a>
-    <a href="/ismail_h<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Noto+Kufi+Arabic&family=Scheherazade+New&display=swap" rel="stylesheet">
-  <title>قصائد</title>
-  <style>
-    /* General Arabic text styling */
-    body {
-      font-family: 'Amiri', 'Noto Kufi Arabic', 'Scheherazade+New', sans-serif;
-      font-size: 1.2rem; /* Comfortable size for poetry */
-      line-height: 1.8; /* Spacious for readability */
-      direction: rtl; /* Right-to-left for Arabic */
-      text-align: center; /* Fixed typo */
-      color: #333; /* Soft dark color for contrast */
-      /* Warm, poetic background */
-      margin: 0; /* Remove default margin */
-      padding: 2rem; /* Add padding for breathing room */
-    }
-
-    /* Navigation styling */
-    nav {
-      margin-bottom: 2rem;
-      display: flex;
-      justify-content: center; /* Center navigation links */
-      gap: 1.5rem; /* Space between links */
-    }
-    nav a {
-      text-decoration: none;
-      color: #2c3e50; /* Match header color for cohesion */
-      font-family: 'Noto Kufi Arabic', sans-serif;
-      font-size: 1.1rem;
-    }
-    nav a:hover {
-      text-decoration: underline;
-      color: #1a252f; /* Slightly darker on hover */
-    }
-
-    /* Styling for poem titles */
-    h1, h2 {
-      font-family: 'Noto Kufi Arabic', sans-serif;
-      font-weight: 700; /* Bold for emphasis */
-      font-size: 1.8rem;
-      color: #2c3e50; /* Deep blue-gray for elegance */
-      margin-bottom: 1rem;
-    }
-
-    /* Styling for poem text */
-    .poem {
-      font-family: 'Amiri', serif;
-      font-size: 1.3rem;
-      font-weight: 400; /* Regular weight for flow */
-      color: #1a252f; /* Darker shade for clarity */
-      padding: 1.5rem;
-      max-width: 600px; /* Narrow width for poetic lines */
-      margin: 0 auto 1.5rem auto; /* Center with bottom margin */
-      border-radius: 8px; /* Soft corners */
-    }
-
-    /* Hover effect for interactive feel */
-    .poem:hover {
-      background-color: #f4ece1; /* Subtle highlight on hover */
-      transition: background-color 0.3s ease;
-    }
-
-    /* Loading and error states */
-    #content:empty::before {
-      content: 'جاري تحميل القصائد...';
-      font-family: 'Amiri', serif;
-      color: #666;
-      font-size: 1.1rem;
-    }
-
-    #content.error::before {
-      content: 'عذرًا، حدث خطأ أثناء تحميل القصائد.';
-      color: #a94442;
-    }
-
-    /* Main content container */
-    #content {
-      margin-top: 2rem;
-      min-height: 200px; /* Prevent layout jump */
-    }
-  </style>
-</head>
-<body>
-  <nav>
-    <a href="/ismail_helali" aria-label="الصفحة الرئيسية">الرئيسية</a>
-    <a href="/ismail_helali/zajal" aria-label="الصفحةئيسية">الرئيسية</a>
-    <a href="/ismail_helali/about" aria-label="حول الشاعر">حول</a>
-    <a href="#" aria-label="اتصل بنا">اتصال</a>
+    <a href="#">الرئيسية</a>
+    <a href="#about">حول</a>
+    <a href="#poems">قصائد</a>
+    <a href="#contact">اتصال</a>
   </nav>
 
-  <h1>hero</h1>
-  
+  <!-- Hero Section -->
+  <header>
+    <h1>مرحباً بك في عالمي الشعري</h1>
+    <p>كلماتي تنبع من إحساس، وتبحث عن صدى في قلبك. اقرأ، تأمل، وشارك هذا الجمال الداخلي.</p>
+    <button class="cta-button" onclick="document.getElementById('poems').scrollIntoView({behavior: 'smooth'})">
+      تصفّح القصائد
+    </button>
+  </header>
 
+  <!-- About Section -->
+  <section class="section" id="about">
+    <h2>عن الشاعر</h2>
+    <p>
+      إسماعيل الهلالي، شاعر يبحث عن النقاء في الكلمة، وعن المعنى في التفاصيل.  
+      يكتب في الحب، والروح، والهوية.  
+      يرى في الشعر مرآةً صادقةً للذات وللحياة.
+    </p>
+  </section>
 
-</body>
-</html>
-elali/zajal" aria-label="الصفحةئيسية">الرئيسية</a>
-    <a href="/ismail_helali/about" aria-label="حول الشاعر">حول</a>
-    <a href="#" aria-label="اتصل بنا">اتصال</a>
-  </nav>
+  <!-- Poems Section -->
+  <section class="section" id="poems">
+    <h2>قصائد مختارة</h2>
 
-  <h1>hero</h1>
-  
+    <div class="poem">
+      يا ليتني كنت نسمةً<br>
+      تمرّ بين يديكِ<br>
+      أو فكرةً تختبئ في عينيكِ<br>
+      أو سكونًا يُنصت لنبض قلبك
+    </div>
 
+    <div class="poem">
+      وحدها الكلمةُ الصادقةُ<br>
+      تعرفُ طريقَها إلى الروح<br>
+      فلا تحتاجُ إلى شرحٍ<br>
+      ولا تبريرٍ ولا توقيع
+    </div>
+  </section>
+
+  <!-- Subscription Section -->
+  <section class="section subscribe">
+    <h2>اشترك لتصلك القصائد الجديدة</h2>
+    <p>أدخل بريدك الإلكتروني وسأرسل لك كل جديد بمجرد نشره.</p>
+    <input type="email" placeholder="بريدك الإلكتروني" />
+    <br><br>
+    <button class="cta-button">اشترك الآن</button>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    © 2025 إسماعيل الهلالي | جميع الحقوق محفوظة – للتواصل: ismail@example.com
+  </footer>
 
 </body>
 </html>
