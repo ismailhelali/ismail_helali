@@ -1,5 +1,4 @@
-const content = {
-  pageTitle: "قصائد – إسماعيل الهلالي",
+const menu = {
   nav: {
     home: "الصفحة الرئيسية",
     about: "اسماعيل هلالي شاعر الروح",
@@ -9,12 +8,12 @@ const content = {
   
 };
 
-function populateContent() {
-  document.getElementById("nav-home").textContent = content.nav.home;
-  document.getElementById("nav-about").textContent = content.nav.about;
-  document.getElementById("nav-poems").textContent = content.nav.poems;
-  document.getElementById("nav-contact").textContent = content.nav.contact;
+function populateMenu() {
+  document.getElementById("nav-home").textContent = menu.nav.home;
+  document.getElementById("nav-about").textContent = menu.nav.about;
+  document.getElementById("nav-poems").textContent = menu.nav.poems;
+  document.getElementById("nav-contact").textContent = menu.nav.contact;
   
 }
 
-document.addEventListener("DOMContentLoaded", populateContent);
+document.addEventListener("DOMContentLoaded", populateMenu);
