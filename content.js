@@ -1,11 +1,6 @@
 const content = {
   pageTitle: "قصائد – إسماعيل الهلالي",
-  nav: {
-    home: "الصفحة الرئيسية",
-    about: "اسماعيل هلالي شاعر الروح",
-    poems: "مسودة قصيدة",
-    contact: "اتصال"
-  },
+
   header: {
     title: "مرحبا بك في هدا المكان المميز المليئ بكلمات وشعر من صفاء الروح",
     description: "قصائدي تنبع من كل شيء حولي و  من القلب و العقل و الروح. وهدفي أن أعيش متعة الحياة و أخرج من فخ المعاناة.",
@@ -34,10 +29,6 @@ const content = {
 
 function populateContent() {
   document.getElementById("page-title").textContent = content.pageTitle;
-  document.getElementById("nav-home").textContent = content.nav.home;
-  document.getElementById("nav-about").textContent = content.nav.about;
-  document.getElementById("nav-poems").textContent = content.nav.poems;
-  document.getElementById("nav-contact").textContent = content.nav.contact;
   document.getElementById("header-title").textContent = content.header.title;
   document.getElementById("header-description").textContent = content.header.description;
   document.getElementById("header-cta").textContent = content.header.cta;
