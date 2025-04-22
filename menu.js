@@ -32,3 +32,6 @@ function populateMenu() {
     });
 
     menuDiv.appendChild(nav);
+}
+
+document.addEventListener("DOMContentLoaded", populateMenu);
