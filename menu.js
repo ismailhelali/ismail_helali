@@ -9,9 +9,13 @@ const menu = {
 
 function populateMenu() {
     const menuDiv = document.getElementById("menu");
+    if (!menuDiv) {
+        console.error("Menu div not found!");
+        return;
+    }
+
     const nav = document.createElement("nav");
 
-    // Create menu items
     const menuItems = [
         { id: "nav-home", href: "#", text: menu.nav.home },
         { id: "nav-about", href: "/ismail_helali/about", text: menu.nav.about },
