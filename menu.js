@@ -1,19 +1,30 @@
 const menu = {
-  nav: {
-    home: "الصفحة الرئيسية",
-    about: "اسماعيل هلالي شاعر الروح",
-    poems: "مسودة قصيدة",
-    contact: "اتصال"
-  },
-  
+    nav: {
+        home: "الصفحة الرئيسية",
+        about: "اسماعيل هلالي شاعر الروح",
+        poems: "مسودة قصيدة",
+        contact: "اتصال"
+    }
 };
 
 function populateMenu() {
-  document.getElementById("nav-home").textContent = menu.nav.home;
-  document.getElementById("nav-about").textContent = menu.nav.about;
-  document.getElementById("nav-poems").textContent = menu.nav.poems;
-  document.getElementById("nav-contact").textContent = menu.nav.contact;
-  
-}
+    const menuDiv = document.getElementById("menu");
+    const nav = document.createElement("nav");
 
-document.addEventListener("DOMContentLoaded", populateMenu);
+    // Create menu items
+    const menuItems = [
+        { id: "nav-home", href: "#", text: menu.nav.home },
+        { id: "nav-about", href: "/ismail_helali/about", text: menu.nav.about },
+        { id: "nav-poems", href: "/ismail_helali/zajal", text: menu.nav.poems },
+        { id: "nav-contact", href: "#contact", text: menu.nav.contact }
+    ];
+
+    menuItems.forEach(item => {
+        const link = document.createElement("a");
+        link.id = item.id;
+        link.href = item.href;
+        link.textContent = item.text;
+        nav.appendChild(link);
+    });
+
+    menuDiv.appendChild(nav);
