@@ -17,7 +17,7 @@ function populateMenu() {
     const nav = document.createElement("nav");
 
     const menuItems = [
-        { id: "nav-home", href: "#", text: menu.nav.home },
+        { id: "nav-home", href: "/ismail_helali/", text: menu.nav.home },
         { id: "nav-about", href: "/ismail_helali/about", text: menu.nav.about },
         { id: "nav-poems", href: "/ismail_helali/zajal", text: menu.nav.poems },
         { id: "nav-contact", href: "#contact", text: menu.nav.contact }
