@@ -1,6 +1,5 @@
 const content = {
   pageTitle: "قصائد –  الشاعر إسماعيل الهلالي",
-
   header: {
     title: "مرحبا بك في هدا المكان المميز المليئ بكلمات وشعر من صفاء الروح",
     description: "قصائدي تنبع من كل شيء حولي و  من القلب و العقل و الروح. وهدفي أن أعيش متعة الحياة و أخرج من فخ المعاناة.",
@@ -13,10 +12,7 @@ const content = {
   },
   poems: {
     title: "قصائد مختارة",
-    
-poem1: "الصمت نور وسط العتمة <br>الصمت وسط ضجيج و الف كلمة <br>و الصمت تكون وحدك او بين الزحمة <br>يطير بيك لجوارحك و يدوقك من لمحبة نسمة <br>تسمع فيه شدى الطيور و غنى البحور و لحان الجبال <br>الصمت يخلي أفكارك واضحة مرتبة لا تلقى بينها جدال <br>الصمت الحان من لخيال ،  يرويها كل من يتنفس <br>الصمت دوى لجراح كل حد فهاد الدنيا مكرفص <br>الصمت علوم لكل من كان بالحرف يعيش و يتفلسف <br>الصمت ماليه وصف من اللي نعرفوه ، هو هوا للي
-يتنفس<br>شحال قدني نوصف ",
-
+    poem1: "الصمت نور وسط العتمة <br>الصمت وسط ضجيج و الف كلمة <br>و الصمت تكون وحدك او بين الزحمة <br>يطير بيك لجوارحك و يعطيك / يدوقك من لمحبة نسمة <br>تسمع فيه شدى الطيور و غنى البحور و لحان الجبال <br>الصمت يخلي أفكارك واضحة مرتبة لا تلقى بينها جدال <br>الصمت الحان من لخيال ،  يرويها كل من يتنفس <br>الصمت دوى لجراح كل حد فهاد الدنيا مكرفص <br>الصمت علوم لكل من كان بالحرف يعيش و يتفلسف <br>الصمت ماليه وصف من اللي نعرفوه ، هو هوا للي يتنفس<br>شحال قدني نوصف",
     poem2: "وحدها الكلمةُ الصادقةُ<br>تعرفُ طريقَها إلى الروح<br>فلا تحتاجُ إلى شرحٍ<br>ولا تبريرٍ ولا توقيع"
   },
   subscribe: {
@@ -39,12 +35,4 @@ function populateContent() {
   document.getElementById("about-description").textContent = content.about.description;
   document.getElementById("poems-title").textContent = content.poems.title;
   document.getElementById("poem-1").innerHTML = content.poems.poem1;
-  document.getElementById("poem-2").innerHTML = content.poems.poem2;
-  document.getElementById("subscribe-title").textContent = content.subscribe.title;
-  document.getElementById("subscribe-description").textContent = content.subscribe.description;
-  document.getElementById("subscribe-input").placeholder = content.subscribe.inputPlaceholder;
-  document.getElementById("subscribe-button").textContent = content.subscribe.button;
-  document.getElementById("footer-content").textContent = content.footer.content;
-}
-
-document.addEventListener("DOMContentLoaded", populateContent);
+  document.getElementById("poem-2").inner
